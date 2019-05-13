@@ -14,7 +14,25 @@ igdb <- 'http://www.igdb.com/'
 ui <- fluidPage(
     # Application title
     titlePanel("Media Statistics Tracker"),
-    tags$hr()
+    tags$hr(),
+    sidebarLayout(
+                  sidebarPanel(
+                    helpText("Discover trends of media mediums throughout the years."),
+                    selectInput("medium", 
+                                label = "Choose a media medium to display:",
+                                choices = list("Film", 
+                                               "Television",
+                                               "Video Games", 
+                                               "Music"),
+                                selected = "Film"),
+                    selectInput(
+                      inputId =  "date", 
+                      label = "Choose a year to display trends from:", 
+                      choices = 1950:2100
+                    )
+                  ),
+                  mainPanel("main panel")
+    )
 )
 
 # Define server logic 
