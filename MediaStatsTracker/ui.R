@@ -1,3 +1,4 @@
+library(ggplot2)
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   #html styles
@@ -6,7 +7,6 @@ ui <- fluidPage(
       h1 {
         margin-top: 0px;
       }
-
     "))
   ),
   # Application title
@@ -24,16 +24,15 @@ ui <- fluidPage(
                 selected = "Film"),
     selectInput("graph", 
                 label = "Choose a graph to display:",
-                choices = list("Histogram"),
-                selected = "Histogram"),
+                choices = list("Bar"),
+                selected = "Bar"),
     selectInput(
       inputId =  "date", 
       label = "Choose a year to display trends from:", 
-      choices = 1950:2100
+      choices = 1900:2100
     )
   ),
   mainPanel(
-    textOutput("graph"),
-    textOutput("date")
+    plotOutput("plot",height = '450px',width = '575px')
   )
 )
