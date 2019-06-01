@@ -69,4 +69,22 @@ server <- function(input, output) {
     uvals <- unique(df$rating)
     paste(uvals[which.max(tabulate(match(df$rating, uvals)))])
   })
+  
+  #renders std of data
+  output$sd <- renderText({
+    df <- get.data.imdb(input$date,input$medium)
+    paste(round(sd(df$rating),digit = 2))
+  })
+  
+  #renders std of data
+  output$max <- renderText({
+    df <- get.data.imdb(input$date,input$medium)
+    paste(max(df$rating))
+  })
+  
+  #renders std of data
+  output$min <- renderText({
+    df <- get.data.imdb(input$date,input$medium)
+    paste(min(df$rating))
+  })
 }

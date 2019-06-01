@@ -29,7 +29,13 @@ ui <- fluidPage(
         tags$dt("Median Rating:"),
         tags$dd(textOutput("median")),
         tags$dt("Mode Rating:"),
-        tags$dd(textOutput("mode"))
+        tags$dd(textOutput("mode")),
+        tags$dt("Maximum Rating:"),
+        tags$dd(textOutput("max")),
+        tags$dt("Minimum Rating:"),
+        tags$dd(textOutput("min")),
+        tags$dt("Standard Deviation of Rating:"),
+        tags$dd(textOutput("sd"))
       ),
       hr(),
       helpText("Discover trends of media mediums throughout the years."),
