@@ -15,22 +15,28 @@ get.data.imdb <- function(year,medium) {
   #Reading the HTML code from the website
   webpage <- read_html(url)
   
-  #grab genre data
-  title_data_html <- html_nodes(webpage,'.lister-item-header a')
-  genre_data_html <- html_nodes(webpage,'.genre')
-  rating_data_html <- html_nodes(webpage,'.ratings-imdb-rating strong')
-  
-  #title post processing
-  title_data <- gsub("[\r\n]","",html_text(title_data_html))
-  
-  #genre post processing
-  genre_data <- gsub("[ \r\n]","",html_text(genre_data_html))
-  genre_data <- gsub(",.*","",genre_data)
-  genre_data <- factor(genre_data)
-  
-  #rating post processing
-  rating_data <- gsub("[ \r\n]","",html_text(rating_data_html))
-  rating_data <- as.numeric(rating_data)
+  #grab title data, with post processing
+  title_data <- webpage %>% 
+                html_nodes('.lister-item-header a') %>% 
+                html_text() %>%  
+                gsub("[\r\n]","",.) %>%
+                factor()
+  #grab genre data, with post processing
+  genre_data <- webpage %>%
+                     html_nodes('.lister-item-content') %>%
+                     html_node('.genre') %>%
+                     html_text() %>%
+                     gsub("[ \r\n]","",.) %>%
+                     gsub(",.*","",.) %>%
+                     factor()
+          
+  #grab rating data, with post processing
+  rating_data <- webpage %>%
+                      html_nodes('.ratings-bar') %>%
+                      html_node('strong') %>%
+                      html_text() %>%
+                      gsub("[\r\n]","",.) %>%
+                      as.numeric()
   
   #combile all lists to form a dataframe, and return it
   data.frame(title = title_data, genre = genre_data,rating = rating_data)
