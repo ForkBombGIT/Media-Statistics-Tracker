@@ -21,6 +21,7 @@ get.data.imdb <- function(year,medium) {
                 html_text() %>%  
                 gsub("[\r\n]","",.) %>%
                 factor()
+  
   #grab genre data, with post processing
   genre_data <- webpage %>%
                      html_nodes('.lister-item-content') %>%
@@ -51,7 +52,10 @@ server <- function(input, output) {
   #renders the selected plot, with selected medium data
   output$plot <- renderPlot({ 
     df <- get.data.imdb(input$date,input$medium)
-    ggplot(df, aes(x=genre)) + geom_bar()
+    ggplot(df, aes(x=genre)) + 
+      geom_bar() +
+      ggtitle(paste("Genre Dispersion of", toString(input$medium),"in the year", toString(input$date))) +
+      labs(x = "Genre", y = "Film Count")
   })
   
   #renders the list of movies

@@ -44,10 +44,6 @@ ui <- fluidPage(
                   choices = list("Film", 
                                  "Television"),
                   selected = "Film"),
-      selectInput("graph", 
-                  label = "Choose a graph to display:",
-                  choices = list("Bar"),
-                  selected = "Bar"),
       selectInput(
         inputId =  "date", 
         label = "Choose a year to display trends from:", 
