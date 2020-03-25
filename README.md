@@ -1,19 +1,32 @@
 # Media Statistics Tracker
 
 ## Table of Contents
-- [About the Repo](#about-the-repo)
+- [About the Repo](#about-the-repo) 
+- [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
 - [Code Structure](#code-structure)
 - [Tech](#tech)
 - [Contributors](#contributors)
 
 ## About the Repo
-A R Shiny application which can be used to discover trends in media throughout the years.
+A lightweight application that can be used to discover trends in media throughout the years.
+
+## Prerequisites
+- RStudio
 
 ## Getting Started
+Import the project into RStudio, and it can be ran from there
 
 ## Code Structure
+```
+.
+├── app.R
+├── server.R
+├── ui.R
 
-## Tech
-
+```
 ## Contributors
+- Eros Di Pede
+  + [Github](https://github.com/ForkBombGIT)
+  + [Website](https://erosdipede.me/)
+
